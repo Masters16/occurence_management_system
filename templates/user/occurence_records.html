@@ -1,0 +1,64 @@
+{% extends 'user/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+    </style>
+   </head>
+<br><br>
+<div class="container">
+    <H4 class="text-center">MY OCCURENCE RECORDS</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">OB Id</th>
+                <th scope="col">Police Name</th>
+                <th scope="col">Station</th>
+                <th scope="col">Citizen Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Address</th>
+                <th scope="col">Created Date</th>
+                <th class="text-right">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in records %}
+            <tr>
+                <td> {{t.record_id}}</td>
+                <td> {{t.police.police_id}}</td>
+                <td> {{t.station_id}}</td>
+                <td>{{t.user_id}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.address}}</td>
+                <td>{{t.created_date}}</td>
+                <td>{{t.status}}</td>
+                {% if t.status == 'Pending' %}
+                <td><span class="label warning">In progress</span></td>
+
+                {% elif  t.status == 'Approved' %}
+                <td><span class="label success">Done</span></td>
+
+                {% else %}
+                <td><span class="label danger">Incomplete</span></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+</div>
+ 
+
+{% endblock content %}

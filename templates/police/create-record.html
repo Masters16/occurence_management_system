@@ -1,0 +1,56 @@
+{% extends 'police/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{%load static%}
+
+<div class="container-fluid p-t-45 p-b-50">
+
+    <div style="margin-left: 70px;" class="card card-5">
+        <div class="card-heading">
+            <h2 class="title"> ADD OCCURENCE RECORD</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.record_id|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.police|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="visually-hidden">
+                {{ recordForm.station_id|as_crispy_field }}
+                    </div>
+                {{ recordForm.user_id|as_crispy_field }}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.description|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.address|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.status|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.created_date|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn--radius-2 btn-danger" type="submit">ADD</button>
+                </div>
+            </form>
+            <br>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

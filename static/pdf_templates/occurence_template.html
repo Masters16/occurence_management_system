@@ -1,0 +1,102 @@
+<!--
+  Invoice template.
+  Styled using Tailwind CSS.
+  Head to the CSS tab to learn more.
+-->
+<style>
+    // Imports Tailwind CSS for the basis and utility classes.
+// To learn more: https://tailwindcss.com
+@import url("https://pdfmonkey-resources.s3.eu-west-3.amazonaws.com/css/tailwind-light.min.css");
+
+.table {
+  td, th {
+    border: 1px solid white;
+    padding: .25rem 1rem;
+  }
+}
+
+.numeric-tabular {
+  // Sets the numbers width so that they stay aligned vertically.
+  font-variant-numeric: tabular-nums;
+}
+
+</style>
+<div class="flex flex-row items-center justify-between mb-8">
+  <div>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kenya_Police_Flag.gif/140px-Kenya_Police_Flag.gif"
+      height="160"
+      width="145">
+          <h1 class="font-bold mb-2 text-4xl">Kenya Police Records</h1>
+  </div>
+
+  <div class="w-3/5">
+    <h1 class="font-bold mb-2 text-4xl">OB Report</h1>
+    <dl class="flex flex-wrap justify-between px-4">
+      <dt class="pr-2 w-5/12">Document Number: </dt>
+      <dd class="w-7/12">{{document_number}}</dd>
+
+      <dt class="pr-2 w-5/12">Created Date: </dt>
+      <dd class="w-7/12">{{document_date}}</dd>
+    </dl>
+  </div>
+</div>
+
+<div class=" items-center flex justify-between mb-8">
+  <dl class="border-2 border-blue-600 flex flex-wrap justify-between px-4 py-2 w-2/3">
+
+    <dt class="w-3/12">Police Id: </dt>
+    <dd class="w-9/12">{{police_id}}</dd>
+
+    <dt class="w-3/12">Station</dt>
+    <dd class="w-9/12">{{station_name}}</dd>
+    <dt class="w-3/12">Station</dt>
+    <dd class="w-9/12">{{station_id}}</dd>
+  </dl>
+</div>
+
+<table class="border-collapse mb-8 numeric-tabular table table-auto w-full">
+  <thead>
+    <tr class="bg-blue-600 text-white">
+      <th class="font-normal text-left">Record ID</th>
+      <th class="font-normal text-left">Police</th>
+      <th class="font-normal text-right">Station</th>
+      <th class="font-normal text-right"> User</th>
+      <th class="font-normal text-right">Description</th>
+      <th class="font-normal text-right"> Address</th>
+      <th class="font-normal text-right">Status</th>
+      <th class="font-normal text-right">Created Date</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for lineItem in records %}
+      <tr class="">
+        <td class="text-left">{{lineItem.record_id}}</td>
+        <td class="text-left">{{lineItem.the_police}}</td>
+        <td class="text-right">{{lineItem.station_id}}</td>
+        <td class="text-right">{{lineItem.user_id}}</td>
+        <td class="text-right">{{lineItem.description}}</td>
+        <td class="text-right">{{lineItem.address}}</td>
+        <td class="text-right">{{lineItem.status}}</td>
+        <td class="text-right">{{lineItem.created_date}}</td>
+      </tr>
+    {% endfor %}
+    <!-- Adding empty row to always have a minimum of 12 donor rows -->
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+<hr>
+
+<p class="mt-4 text-center"><small>Blood Works Org</small></p>

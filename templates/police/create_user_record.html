@@ -1,0 +1,48 @@
+{% extends 'police/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{%load static%}
+
+<div class="container-fluid p-t-45 p-b-50">
+
+    <div style="margin-left: 70px;" class="card card-5">
+        <div class="card-heading">
+            <h2 class="title"> ADD USER RECORD</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.user_no|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.profile_pic|as_crispy_field }}
+                    </div>
+                </div>
+                {{ recordForm.name|as_crispy_field }}
+                {{ recordForm.mobile|as_crispy_field }}
+                {{ recordForm.email|as_crispy_field }}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.id_card|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ recordForm.created_date|as_crispy_field }}
+                    </div>
+                </div>
+
+
+                <div>
+                    <button class="btn btn--radius-2 btn-danger" type="submit">ADD</button>
+                </div>
+            </form>
+            <br>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

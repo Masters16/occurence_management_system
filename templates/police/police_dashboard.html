@@ -1,0 +1,95 @@
+{% extends 'police/base.html' %}
+{% block content %}
+<br><br>
+<div class="container">
+    {% include 'appointments/message.html' %}
+    <div class="row">
+        <div class="col-12 bg-white px-3 mb-3 pb-3">
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="py-2">Police ID</p>
+                            <p class="py-2 text-muted">{{ police.police_id }}</p>
+                        </div>
+            <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="py-2">Police UserName</p>
+                            <p class="py-2 text-muted">{{ police.user }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="py-2">Mobile No</p>
+                            <p class="py-2 text-muted">{{ police.mobile }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="py-2">Email</p>
+                            <p class="py-2 text-muted">{{ police.email }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="py-2">Station</p>
+                            <p class="py-2 text-muted">{{ police.station_id.station_name }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="py-2">Date of admission</p>
+                            <p class="py-2 text-muted">{{ police.created_date }}</p>
+                        </div>
+                    </div>
+
+        <div class="row row-cols-2 row-cols-lg-4">
+      <div class="col">
+        <div class="card bg-light">
+          <div class="card-body">
+              <div class="blood">
+                <i class="fas fa-sync-alt xyz"></i>
+              </div><br>
+              <div>
+                 Served Citizens <br>
+                  {{served_count}}
+              </div>                            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                  <i class="fas fa-sync xyz"></i>
+                </div><br>
+                <div>
+                    Pending Occurence Issues <br>
+                    {{pending_count}}
+                </div>                            
+            </div>
+          </div>
+      </div>
+            <div class="col">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-sync xyz"></i>
+                  </div><br>
+                  <div>
+                       Generated Reports <br>
+                      {{reports_count}}
+                  </div>
+              </div>
+            </div>
+        </div>
+      <div class="col">
+          <div class="card bg-light visually-hidden">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-check-circle xyz"></i>
+                  </div><br>
+                  <div>
+                       Completed Pre-Exams {{exams_count}}
+                  </div>                            
+              </div>
+            </div>
+      </div>
+
+
+            </div>
+    </div>
+
+
+</div>
+
+
+{% endblock content %}
